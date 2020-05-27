@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% extends "users/base.html" %}
+{% load crispy_forms_tags%}
+
+
+
+{%block content %}
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<form method="POST">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit"> submit</button>
+</form>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "harsha_templates/index.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<section class="ftco-section justify-content-end ftco-search">
+
+    	<div class="container-wrap ml-auto">
+    		<div class="row no-gutters">
+          <div class="col-md-12 nav-link-wrap">
+            <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Flight</a>
+            </div>
+          </div>
+          <div class="col-md-12 tab-wrap">
+
+            <div class="tab-content p-4 px-5" id="v-pills-tabContent">
+
+              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+              	<form method="POST" class="search-destination" autocomplete="off">
+                    {% csrf_token %}
+              		<div class="row">
+              			<div class="col-md align-items-end">
+              				<div class="form-group">
+              					<label for="#">From</label>
+	              				<div class="form-field">
+	              					<div class="icon"><span class="icon-my_location"></span></div>
+					                <input type="text" name="from" autocomplete="off" id="search-text" class="form-control" placeholder="From">
+								</div>
+ 							</div>
+							<div id="match-list"></div>  <!-- auto complete test change-->
+              			</div>
+              			<div class="col-md align-items-end">
+              				<div class="form-group">
+              					<label for="#">Where</label>
+              					<div class="form-field">
+	              					<div class="icon"><span class="icon-map-marker"></span></div>
+					                <input type="text" name="to" autocomplete="off" id="destination-text" class="form-control" placeholder="Where">
+								</div>
+							</div>
+							<div id="trend-list"></div>  <!-- auto complete test change-->
+              			</div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">Travel Mode</label>
+								<div class="form-field mt-2">
+									<style>
+									  .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius:25px;}
+  									  .toggle.ios .toggle-handle { border-radius: 25px;}
+  									  .toggle-handle{ background-color: bisque;
+  									  }
+									</style>
+									<label> </label>
+									<input id="travel-mode" type="checkbox" name="travel-mode" checked data-toggle="toggle" data-on="One Way" data-off="Return" onchange="enable_disable_end_date_html()">
+								</div>
+							</div>
+						</div>
+              			<div class="col-md align-items-end">
+              				<div class="form-group">
+              					<label for="#">Check In</label>
+              					<div class="form-field">
+	              					<div class="icon"><span class="icon-map-marker"></span></div>
+					                <input type="text" name="date_start" id="date-start" class="form-control checkin_date" placeholder="Check In">
+					              </div>
+				              </div>
+              			</div>
+              			<div class="col-md align-items-end">
+              				<div class="form-group">
+              					<label for="#">Check Out</label>
+              					<div class="form-field">
+	              					<div class="icon"><span class="icon-map-marker"></span></div>
+					                <input type="text" disabled="disabled" name="date_end" id="date-end" class="form-control checkout_date" placeholder="From">
+					              </div>
+				              </div>
+              			</div>
+						<div class="col-md align-items-end">
+              				<div class="form-group">
+              					<label for="#">Adults</label>
+              					<div class="form-field">
+	              					<div class="select-wrap">
+			                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+			                      <select name="" id="flights-num-travs" class="form-control">
+			                      	<option value="">1</option>
+			                        <option value="">2</option>
+			                        <option value="">3</option>
+			                        <option value="">4</option>
+			                        <option value="">5</option>
+			                      </select>
+			                    </div>
+					              </div>
+				              </div>
+						  </div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">Children</label>
+								<div class="form-field">
+									<div class="select-wrap">
+								<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+								<select name="" id="flights-num-child-travs" class="form-control">
+									<option value="">1</option>
+								  <option value="">2</option>
+								  <option value="">3</option>
+								  <option value="">4</option>
+								  <option value="">5</option>
+								</select>
+							  </div>
+								</div>
+							</div>
+						</div>
+              			<div class="col-md align-items-end mt-1">
+              				<div class="form-group">
+								<label for="#"> </label>
+              					<div class="form-field">
+					                <input type="submit" value="Search" onclick ="flights_submit_btn_on_click()" style="cursor: pointer"  class="form-control btn btn-primary">
+					              </div>
+				              </div>
+              			</div>
+              		</div>
+              	</form>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+
+
+{% endblock content %}
