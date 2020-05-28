@@ -150,7 +150,7 @@ search.addEventListener('input', () => searchStates(searchText=search.value));
 desti_text.addEventListener('input',  () => searchStates2(searchText=desti_text.value));
 start_date_html.addEventListener('input', date_selector(start_date_html.value,"Start"));
 end_date_html.addEventListener('input', date_selector(end_date_html.value,"End"));
-//mode_bool.addEventListener('click',enable_disable_end_date_html());
+
 
 function flights_submit_btn_on_click() {
    window.alert("inside button click function");

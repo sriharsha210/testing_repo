@@ -283,9 +283,9 @@ body{
     .tp-flight-plan .item.it-2 .dr-row {
         display: flex;
         flex-direction: row;
-        border: 0.5px solid #7deb6a;
+
         border-radius:20px;
-        box-shadow: 2px 2px #7deb6a;
+
     }
 
     .tp-flight-plan .item.it-2 .airline-logo {
@@ -549,7 +549,7 @@ body{
                     <div class="context collapsed" data-toggle="collapse" data-target="#demo{{flight_info_list.0}}" aria-expanded="false">
                           <a role="button" tabindex="0" class="tog-cal itin-det-btn">
                             <i class="fa fa-chevron-up"></i>
-                              <span>{{flight_info_list.0}}</span>
+                              <span >{{flight_info_list.0}}</span>
                             <i class="fa fa-chevron-down"></i>
                           </a>
                           <div class="item it-1">
@@ -557,69 +557,72 @@ body{
                             <div class="airline-image">
                              <!-- <div class="df-text">3 Hours</div> -->
                               <span class="img-wrapper">
-                                <span class="top-label has-stops">2 Stops <span class="stops">CDG,SAW</span></span>
+                                {%if flight_info_list.14 == "0" %}
+                                <span class="top-label has-stops">2 Stops <span class="stops">CDG,SAW</span></span> <span>{{flight_info_list.14}}</span>
+                                {% endif %}
                               </span>
                             </div>
 
                             <div class="port-seg">
                               <div class="flight-seg origin">
-                                <div class="time">10:30</div>
-                                <div class="port">IST</div>
-                                <div class="name">Istanbul</div>
+                                <div class="time">{{flight_info_list.9 }}</div>
+                                <div class="port">{{flight_info_list.7 }}</div>
+                                <div class="name">{{flight_info_list.8 }}</div>
                               </div>
                               <div class="flight-seg destination">
-                                <div class="time">01:30</div>
-                                <div class="port">ESB</div>
-                                <div class="name">Ankara</div>
+                                <div class="time">{{flight_info_list.12 }}</div>
+                                <div class="port">{{flight_info_list.10 }}</div>
+                                <div class="name">{{flight_info_list.11 }}</div>
                               </div>
                             </div>
                           </div>
                           <div class="item it-2">
-                            <div class="dr-row">
+                            <div class="dr-row" style="padding-right: 10px;">
                               <div class="al-name">
-                              <span >Book at</span>
+
                                 </div>
-                              <div class="price"><span>$200</span></div>
+                              <input type="submit" value=" Book at {{flight_info_list.16}} {{flight_info_list.15}}" class="btn btn-primary">
+                              <!--<div class="price"><span>{{flight_info_list.16}}</span></div>-->
 
                             </div>
-                            <div class="take-tim">Seats Available {{num}}</div>
+                            <div class="take-tim">Seats Available {{flight_info_list.2}}</div>
                           </div>
                     </div>
                     <div id="demo{{flight_info_list.0}}" class="fly-wrap collapse">
                       <div class="fly-det">
                         <div class="f-item">
                           <div class="airway-title">
-                            <img class="airline-logo" src="https://www.turkishairlines.com/theme/img/carrierairlines/carriercode_tk.png" /> <span>Turkish Airlines</span>
+                            <img class="airline-logo" src="https://www.turkishairlines.com/theme/img/carrierairlines/carriercode_tk.png" /> <span>{{flight_info_list.6}}</span>  <span>{{flight_info_list.4}}</span>  <span>{{flight_info_list.5}}</span>
                           </div>
                           <div class="root-de">
-                            <div class="times"> 4 Hour </div>
+                            <div class="times"> {{flight_info_list.13}}  </div>
                             <div class="directs">
                               <div class="itin-time">
                                 <div class="itin-lines"></div>
                               </div>
 
                               <div class="hour-sm">
-                                <div class="hour-time-sm">02:10</div>
+                                <div class="hour-time-sm">{{flight_info_list.9}}</div>
 
-                                <div class="hour-time-sm">05:55</div>
+                                <div class="hour-time-sm">{{flight_info_list.12}}</div>
                               </div>
                             </div>
 
                             <div class="itin-target">
-                              <div class="tar-label">IST İstanbul Atatürk</div>
-                              <div class="tar-label">BAH Bahreyn</div>
+                              <div class="tar-label">{{flight_info_list.7 }}</div>
+                              <div class="tar-label">{{flight_info_list.10 }}</div>
                             </div>
                           </div>
 
                         </div>
                       </div>
-
+<!--
                       <div class="delay-frame">
                         <div class="welc">
                           7 hours delayed
                         </div>
                       </div>
-
+-->
                       <div class="f-item">
                         <div class="airway-title">
                           <img class="airline-logo" src="https://www.turkishairlines.com/theme/img/carrierairlines/carriercode_tk.png" /> <span>Turkish Airlines</span>
@@ -649,12 +652,12 @@ body{
                       <div class="arrival-info">
                         <span class="sub-span">
                           <strong>Arrives:</strong>
-                          Wed, Jan 23, 2019
+                          {{flight_info_list.12 }}
                         </span>
 
                         <span class="sub-span duration-info">
                           <strong>Journey duration:</strong>
-                          28h 35m
+                          {{flight_info_list.3 }}
                         </span>
                       </div>
                     </div>

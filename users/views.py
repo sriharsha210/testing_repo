@@ -17,7 +17,6 @@ def flight_inspiration(origin, destination,start_date, end_date, no_of_travelers
             originLocationCode=origin,
             destinationLocationCode=destination,
             departureDate=datetime.datetime.strptime(start_date, "%m/%d/%Y").strftime("%Y-%m-%d"),
-            returnDate=datetime.datetime.strptime(end_date, "%m/%d/%Y").strftime("%Y-%m-%d"),
             adults=no_of_travelers,
             children=2)
         print("response")
@@ -32,7 +31,7 @@ def flight_inspiration(origin, destination,start_date, end_date, no_of_travelers
 def flights_response_parser(response):
     flight_parsed_list = []
     count = 0
-    print('id', 'oneway', 'num of bookable seats', 'flight_total_duration', 'depart_info', 'ariv_info', )
+    print('id', 'oneway', 'num of bookable seats', 'flight_total_duration', 'depart_info', 'ariv_info')
     for a in range(len(response["data"])):
         for b in range(len(response["data"][a]['itineraries'])):
             for c in range(len(response["data"][a]['itineraries'][b]['segments'])):
@@ -91,10 +90,11 @@ def home2(request):
         start_date=request.POST.get('date_start')
         end_date=request.POST.get('date_end')
         no_of_travelers = request.POST.get('num_travs')
+        print(no_of_travelers)
         print(origin,destination,start_date,end_date,no_of_travelers)
         print(type(start_date),type(end_date))
         flights_info_list=flight_inspiration(origin,destination,start_date,end_date,no_of_travelers)
-        trav_data = origin + destination + start_date + end_date + no_of_travelers
+        trav_data = origin + destination + start_date + no_of_travelers
         print(len(flights_info_list))
         if trav_data!=' ':
             print("Inside the If function",trav_data)
